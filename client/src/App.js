@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import MovieList from "./components/MovieList";
+import Movie from "./components/Movie";
 import './App.css';
 
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div>
+          <h1>Studio Ghibli Database</h1>
+          <div>
+            <Link to="/">Movies</Link>
+            <Link to="/movie/1">Specific Movie</Link>
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Route exact path="/" component={MovieList} />
+        <Route path="/moive/:id" component={Movie} />
       </div>
+    </Router>
     );
   }
 }
