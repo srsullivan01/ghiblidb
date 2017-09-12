@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
+import Navbar from "./components/Navbar";
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+          <Navbar />
         <div>
           <h1>Studio Ghibli Database</h1>
           <div>
