@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :comments
-  devise_for :users
+  mount_devise_token_auth_for 'User', at: 'auth'
+
   root to: "movies#index"
   namespace :api do
     resources :movies do
