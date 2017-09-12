@@ -14,7 +14,11 @@ class Api::MoviesController < ApplicationController
   #show
   def show
     @movie = Movie.find(params[:id])
-    render json: @movie
+    @characters = @movie.characters.all
+    render json: {
+      movie: @movie,
+      characters: @characters
+    }
   end
 
   #update

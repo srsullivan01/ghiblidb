@@ -9,17 +9,17 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
+        <div className="App">
           <Navbar />
         <div>
           <h1>Studio Ghibli Database</h1>
           <div>
-            <Link to="/">Movies</Link>
+
             <Link to="/movie/1">Specific Movie</Link>
           </div>
         </div>
         <Route exact path="/" component={MovieList} />
-        <Route path="/moive/:id" component={Movie} />
+        <Route exact path="/movies/:id" component={Movie} />
       </div>
     </Router>
     );

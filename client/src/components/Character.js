@@ -17,7 +17,7 @@ class Character extends Component {
 
   _fetchCharacters - async (characterId) => {
     try {
-      const response = await axios.get(`/api/characters/${characterId}/`)
+      const response = await axios.get(`https://ghibliapi.herokuapp.com/people`)
       await this.setState({character: response,data,character, characters: response.data.characters});
       return response.data;
     }
@@ -30,7 +30,7 @@ class Character extends Component {
   render() {
     return (
       <div>
-          <img src={this.state.character.url} alt={this.state.character.name} />
+          {/* <img src={this.state.character.url} alt={this.state.character.name} /> */}
           <h1>{this.state.character.name}</h1>
           <div>
           <h3>{this.state.character.age}</h3>

@@ -1,7 +1,8 @@
 class Movie < ApplicationRecord
+  has_many :character, dependent: :destroy
   include HTTParty
  base_uri 'https://ghibliapi.herokuapp.com/films'
-  has_many :character, dependent: :destroy
+
 
   def self.generate(api_id)
     movie = find_by api_id: api_id
@@ -10,7 +11,6 @@ class Movie < ApplicationRecord
     response = get "/#{api_id}"
 
     create!(title: response['title'],
-    image:
     description:response['description'],
     director: response['director'],
     producer: response['producer'],

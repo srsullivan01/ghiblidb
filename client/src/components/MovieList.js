@@ -16,7 +16,7 @@ class MovieList extends Component {
 
   _fetchMovies = async () => {
     try {
-      const res = await axios.get('/api/movies');
+      const res = await axios.get('https://ghibliapi.herokuapp.com/films');
       await this.setState({movies: res.data});
       return res.data
     }
@@ -36,7 +36,7 @@ class MovieList extends Component {
         <h1>All Ghibli Films</h1>
         {this.state.movies.map(movie => (
           <div>
-            <Link to={`/movie/${movie.id}`} > {movie.title} </Link>
+            <Link to={`/movies/${movie.id}`} > {movie.title} </Link>
           </div>
         ))}
       </div>

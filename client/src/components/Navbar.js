@@ -31,7 +31,7 @@ const Navbar = () => {
         <image src= "client/public/images/totologo.jpg" />
       </div>
       <div>
-        <Link to="/movies/1">Movies</Link>
+        <Link to="api/movies">Movies</Link>
         <Link to="/sign_up">Sign Up</Link>
         <Link to="/addmovie">Add a Movie</Link>
       </div>
