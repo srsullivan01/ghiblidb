@@ -1,3 +1,6 @@
 class Character < ApplicationRecord
-  belongs_to :artist
+  include HTTParty
+ base_uri 'https://ghibliapi.herokuapp.com/people'
+  belongs_to :movie
+
 end

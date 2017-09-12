@@ -15,10 +15,10 @@ class Movie extends Component {
     this._fetchMovies(movieId)
   }
 
-  _fetchMovies - async (movieId) => {
+  _fetchMovies = async (movieId) => {
     try {
-      const response = await axios.get(`/api/movies/${moiveId}/characters`)
-      await this.setState({movie: response,data,movie, characters: response.data.characters});
+      const response = await axios.get(`/api/movies/${movieId}/characters`)
+      await this.setState({movie: response.data.movie, characters: response.data.characters});
       return response.data;
     }
     catch (err) {
