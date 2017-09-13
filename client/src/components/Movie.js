@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Comment from "./Comment";
 import axios from 'axios';
 
 
@@ -43,6 +44,7 @@ class Movie extends Component {
               <h4>{character.name}</h4>
             </div>
           ))}
+          <Comment />
       </div>
     );
   }
