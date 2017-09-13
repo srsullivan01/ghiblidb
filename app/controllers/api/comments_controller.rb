@@ -1,5 +1,12 @@
 class Api::CommentsController < ApplicationController
-before_action :authenticate_user!
+# before_action :authenticate_user!
+
+def index
+  @movie = Movie.find(params[:movie_id])
+  @comments = @movie.comments.all
+  render json: @comments
+end
+
   def new
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.new

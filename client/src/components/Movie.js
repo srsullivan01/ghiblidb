@@ -23,7 +23,7 @@ class Movie extends Component {
   _fetchMovies = async (movieId) => {
     try {
       const res = await axios.get(`https://ghibliapi.herokuapp.com/films/${movieId}`)
-      console.log(response)
+      // console.log(response)
       this.setState({movie: res.data, characters: res.data.people});
 
       const payload = this.state.movie;
@@ -48,8 +48,7 @@ class Movie extends Component {
               <h4>{character.name}</h4> */}
 
           {/* // ))} */}
-          <CommentList movieId={this.state.movie.id}
-            id={this.state.comment.id} />
+          <CommentList movieId={this.state.movie.id} />
 
           <Comment movieId={this.state.movie.id}  />
       </div>

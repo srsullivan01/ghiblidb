@@ -8,18 +8,21 @@ class CommentList extends Component {
     super();
     this.state = {
       comments: [],
-      error: ''
+      error: '',
+      banana: ''
     };
   }
 
 componentWillMount(){
-  this._fetchComments();
+  // this._fetchComments();
 }
 _fetchComments = async () => {
+  console.log(this.props.movieId)
   const movie_id = this.props.movieId
-  const id = this.props.id
+  // console.log(this.props.movieId)
+  // const id = this.state.commentId
   try {
-    const res = await axios.get(`/api/movies/${movie_id}/comments/${id}`);
+    const res = await axios.get(`/api/movies/${this.props.movieId}/comments`);
     this.setState({comments: res.data});
     return res.data
   }
@@ -35,15 +38,19 @@ render(){
   }
   return (
     <div>
+      <button onClick={this._fetchComments}>Fetch</button>
     {this.state.comments.map(comment => (
       <div>
         {comment.title} <br/>
         {comment.body}
+
       </div>
     ))}
   </div>
     );
   }
 }
-
+CommentList.defaultProps = {
+  banana: ''
+}
 export default CommentList;
