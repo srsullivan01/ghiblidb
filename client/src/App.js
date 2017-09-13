@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
 import Navbar from "./components/Navbar";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 import './App.css';
 
 class App extends Component {
@@ -11,13 +13,9 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-        <div>
-          <h1>Studio Ghibli Database</h1>
-          <div>
 
-            <Link to="/movie/1">Specific Movie</Link>
-          </div>
-        </div>
+        <Route exact path="/signup" component={SignUp}/>
+        <Route exact path="/signin" component={SignIn}/>
         <Route exact path="/" component={MovieList} />
         <Route exact path="/movies/:id" component={Movie} />
       </div>
