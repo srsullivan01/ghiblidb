@@ -8,12 +8,13 @@ class Api::MoviesController < ApplicationController
   #create
   def create
     @movie = Movie.create!(movie_params)
-    redirect_to movie_path(@movie)
+    redirect_to api_movie_path(@movie)
   end
 
   #show
   def show
     @movie = Movie.find(params[:id])
+    @comments = @movie.comments.all
     @characters = @movie.characters.all
     render json: {
       movie: @movie,
@@ -25,14 +26,14 @@ class Api::MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     @movie.update!(movie_params)
-    redirect_to movie_path(@movie)
+    redirect_to api_movie_path(@movie)
   end
 
   #destroy
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to movies_path
+    redirect_to api_movies_path
   end
 
 #params

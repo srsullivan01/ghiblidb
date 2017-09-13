@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
-  has_many :character, dependent: :destroy
+  has_many :characters, dependent: :destroy
+  has_many :comments, dependent: :destroy
   include HTTParty
  base_uri 'https://ghibliapi.herokuapp.com/films'
 

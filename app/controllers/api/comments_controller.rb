@@ -1,19 +1,26 @@
-class CommentsController < ApplicationController
-
+class Api::CommentsController < ApplicationController
+before_action :authenticate_user!
   def new
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.new
   end
 
   def create
-      @movie = Movie.find(params[:id])
+      puts params[:movie_id]
+      @movie = Movie.find_by! api_id: params[:movie_id]
+      puts @movie.title
       @comment = @movie.comments.create(comment_params)
       if(@comment.valid? and @comment.save)
-        redirect_to movie_path
+        render json: @comment
         else
-          flash[:alert] = "Unsuccessful Post"
-          redirect_to movie_path
+          render json: {
+            "message": "could not save comment"
+          }
       end
+  end
+
+  def show
+    @comments = @movie.comments.all
   end
 
   def edit
@@ -24,15 +31,13 @@ class CommentsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_to movie_path(@movie)
+    redirect_to api_movie_path(@movie)
   end
 
     private
 
     def comment_params
         comment = params.require(:comment).permit(:body, :title)
-        comment.merge(user_id: current_user.id, movie_id: params[:id])
+        comment.merge(user_id: current_user.id)
     end
-end
-
 end

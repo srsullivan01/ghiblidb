@@ -32,7 +32,7 @@ const Navbar = () => {
       </div>
       <div>
         <Link to="api/movies">Movies</Link>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/signUp">Sign Up</Link>
         <Link to="/addmovie">Add a Movie</Link>
       </div>
     </Nav>

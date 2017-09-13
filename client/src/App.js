@@ -4,18 +4,22 @@ import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
 import Navbar from "./components/Navbar";
 import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import SignUpLogIn from "./components/SignUpLogIn";
+// import Comment from "./components/Comment";
+import { setAxiosHeaders } from './util';
 import './App.css';
 
 class App extends Component {
+  componentWillMount(){
+    setAxiosHeaders();
+  }
   render() {
     return (
       <Router>
         <div className="App">
           <Navbar />
 
-        <Route exact path="/signup" component={SignUp}/>
-        <Route exact path="/signin" component={SignIn}/>
+        <Route exact path="/signUp" component={SignUpLogIn}/>
         <Route exact path="/" component={MovieList} />
         <Route exact path="/movies/:id" component={Movie} />
       </div>

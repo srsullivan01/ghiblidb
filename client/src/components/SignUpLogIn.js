@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { saveAuthTokens } from '../util';
 
-class SignUp extends Component {
+class SignUpLogIn extends Component {
  constructor(){
    super();
    this.state = {
@@ -12,23 +13,17 @@ class SignUp extends Component {
        redirect: false
    }
  }
-
- _signUp = async (e) => {
-   e.preventDefault();
-   const payload = {
-     email: this.state.email,
-     password: this.state.password,
-     password_confirmation: this.state.password_confirmation
-   }
-   const response = await axios.post('/auth', payload);
-   console.log(response.data);
-   console.log(response.headers);
-   axios.defaults.headers.client = response.headers.client
-   axios.defaults.headers.expiry = response.headers.expiry
-   axios.defaults.headers.uid = response.headers.uid
-   axios.defaults.headers['access-token'] = response.header['access-token']
-   this.setState({redirect: true})
- }
+   _signUp = async (e) => {
+      e.preventDefault();
+      const payload = {
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.password_confirmation
+      }
+      const response = await axios.post('/auth', payload)
+      saveAuthTokens(response.headers)
+      this.setState({redirect: true})
+    }
 
  _signIn = (e) => {
    e.preventDefault();
@@ -69,4 +64,4 @@ class SignUp extends Component {
  }
 }
 
-export default SignUp;
+export default SignUpLogIn;

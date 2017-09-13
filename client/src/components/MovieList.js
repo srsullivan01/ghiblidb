@@ -20,6 +20,7 @@ class MovieList extends Component {
       await this.setState({movies: res.data});
       return res.data
     }
+  
     catch (err) {
       console.log(err)
       await this.setState({error: err.message})
