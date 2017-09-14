@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { saveAuthTokens } from '../util';
+import styled  from 'styled-components';
+
+const LoginStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate(-50%, -50%)
+  max-width: 450px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;  
+`;
 
 class SignUpLogIn extends Component {
  constructor(){
@@ -25,8 +37,14 @@ class SignUpLogIn extends Component {
       this.setState({redirect: true})
     }
 
- _signIn = (e) => {
+ _signIn = async (e) => {
    e.preventDefault();
+   const payload = {
+     email: this.state.email,
+     password: this.state.password
+   }
+   const response = await axios.post('/auth/sign_in', payload)
+   saveAuthTokens(response.headers)
    this.setState({redirect: true})
  }
 
@@ -41,7 +59,7 @@ class SignUpLogIn extends Component {
      return <Redirect to="/" />
    }
    return (
-     <div>
+     <LoginStyle>
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
@@ -59,7 +77,7 @@ class SignUpLogIn extends Component {
          <button>Sign Up</button>
          <button onClick={this._signIn}>Log In</button>
        </form>
-     </div>
+     </LoginStyle>
    );
  }
 }

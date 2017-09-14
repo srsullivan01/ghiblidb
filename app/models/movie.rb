@@ -2,7 +2,7 @@ class Movie < ApplicationRecord
   has_many :characters, dependent: :destroy
   has_many :comments, dependent: :destroy
   include HTTParty
- base_uri 'https://ghibliapi.herokuapp.com/films'
+  base_uri 'https://ghibliapi.herokuapp.com/films'
 
 
   def self.generate(api_id)
