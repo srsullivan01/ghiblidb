@@ -37,19 +37,21 @@ const StyledTitle = styled.div`
 `;
 
 const StyledBody = styled.div`
-input[type="textarea"]{
-  width: 400px;
-  height: 250px;
-}
+  input[type="textarea"]{
+    width: 400px;
+    height: 250px;
+  }
 `;
 
 const StyledButton = styled.button`
+  align-items: space-between;
   margin: 3px;
   padding: 8px 15px 8px 15px;
   background-color: #6BA260;
   border: none;
   color: #EBE3D5;
 `;
+
 
 
 // component
@@ -103,6 +105,7 @@ class Comment extends Component {
           <input onChange={this._handleChange} type="textarea" name= "body" value={this.state.body}  />
         </StyledBody>
           <StyledButton>Submit</StyledButton>
+
         </StyledForm>
         {/* {this.state.redirect && (<Redirect to={`/api/movies/${movie_id}/comments`}/>)} */}
 

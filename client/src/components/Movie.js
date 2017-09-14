@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Comment from "./Comment";
 import CommentCard from "./CommentCard";
 import CommentList from "./CommentList";
@@ -35,6 +35,9 @@ h1{
   color: #072A5A;
 }
 `;
+
+
+
 // Component
 class Movie extends Component {
   constructor() {
@@ -43,16 +46,18 @@ class Movie extends Component {
       movie: {},
       comments: [],
       error: ''
-    };
+    }
   }
 
   componentWillMount() {
     const movieId = this.props.match.params.id;
+    // console.log(props);
     this._fetchMovies(movieId);
     this._fetchComments(movieId)
   }
 
   _fetchComments = async (movieId) => {
+    // console.log(movieId);
     try {
       const res = await axios.get(`/api/movies/${movieId}/comments`);
       this.setState({comments: res.data});
@@ -68,10 +73,9 @@ class Movie extends Component {
     try {
       const res = await axios.get(`https://ghibliapi.herokuapp.com/films/${movieId}`)
       // console.log(response)
-      this.setState({movie: res.data, characters: res.data.people});
-
+      this.setState({movie: res.data, characters: res.data.people, api_id: res.data.id});
       const payload = this.state.movie;
-      const response = await axios.post(`/api/movies`, payload)
+      const response = await axios.post(`https://ghibliapi.herokuapp.com/films/${movieId}`, payload)
       this.setState({movie: response.data})
     }
     catch (err) {
@@ -108,13 +112,13 @@ class Movie extends Component {
 
           {this.state.comments.map((comment) => (
             <div>
-              <CommentCard key={comment.id} comment={comment}/>
+
 
             </div>
           ))}
         </div>
-
-          <Comment movieId={this.state.movie.id}  />
+          <CommentList api_id= {this.state.api_id} />
+          <Comment movieId={this.state.movie.api_id}  />
 
     </div>
     );

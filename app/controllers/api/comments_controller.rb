@@ -2,7 +2,8 @@ class Api::CommentsController < ApplicationController
 before_action :authenticate_user!
 
 def index
-  @movie = Movie.find(params[:movie_id])
+
+  @movie = Movie.find(params[:api_id])
   puts "COMMENTS"
   puts @movie
   puts @movie.comments

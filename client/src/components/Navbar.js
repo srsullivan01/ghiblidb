@@ -30,13 +30,12 @@ const Navbar = () => {
   return (
     <Nav>
       <Link to="/"> <h1>GhibliDB</h1></Link>
+      {/* <div>
+        <input type="text" name="search" placeholder="Search.." />
+      </div> */}
       <div>
-        <image src= "client/public/images/totologo.jpg" />
-      </div>
-      <div>
-        <Link to="api/movies">Movies</Link>
+        <Link to="/">Movies</Link>
         <Link to="/signUp">Sign Up</Link>
-        <Link to="/addmovie">Add a Movie</Link>
       </div>
     </Nav>
   );

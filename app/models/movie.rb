@@ -5,7 +5,7 @@ class Movie < ApplicationRecord
   base_uri 'https://ghibliapi.herokuapp.com/films'
 
 
-  def self.generate(api_id)
+  def self.generate(id)
     movie = find_by api_id: api_id
     return movie unless movie.nil?
 

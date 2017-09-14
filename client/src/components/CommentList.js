@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Comment from "./Comment";
+import CommentCard from "./CommentCard";
 import axios from 'axios';
+
+
 
 class CommentList extends Component {
   constructor(){
     super();
     this.state = {
       comments: [],
-      error: '',
-      banana: ''
+      error: ''
     };
   }
 
 componentWillMount(){
-  // this._fetchComments();
+  this._fetchComments();
 }
 _fetchComments = async () => {
-  console.log(this.props.movieId)
-  const movie_id = this.props.movieId
+
+  const movie_id = this.props.api_id
+  const id = this.props.id
   // console.log(this.props.movieId)
   // const id = this.state.commentId
+  console.log(this.props.api_id)
   try {
-    const res = await axios.get(`/api/movies/${this.props.movieId}/comments`);
+    const res = await axios.get(`/api/movies/${this.props.api_id}/comments`);
+    console.log(res.data)
     this.setState({comments: res.data});
     return res.data
   }
@@ -38,7 +42,7 @@ render(){
   }
   return (
     <div>
-      <button onClick={this._fetchComments}>Fetch</button>
+
     {this.state.comments.map(comment => (
       <div>
         {comment.title} <br/>
@@ -46,11 +50,10 @@ render(){
 
       </div>
     ))}
+
   </div>
     );
   }
 }
-CommentList.defaultProps = {
-  banana: ''
-}
+
 export default CommentList;

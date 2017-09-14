@@ -29,19 +29,19 @@ const StyledImg = styled.img`
 `;
 
 const LinkContainer = styled.div`
-display: flex;
-align-items: right;
-background-color: #EBE3D5;
-margin-top: 3%;
-padding: 2%;
-justify-content: space-between;
-flex-direction: column;
-border-radius: 9px;
-border: 1px solid;
-border-color: #74787B;
-h1{
-    color: #072A5A;
-  }
+  display: flex;
+  align-items: right;
+  background-color: #EBE3D5;
+  margin-top: 3%;
+  padding: 2%;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 9px;
+  border: 1px solid;
+  border-color: #74787B;
+  h1{
+      color: #072A5A;
+    }
 `;
 
 

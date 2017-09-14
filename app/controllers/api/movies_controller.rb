@@ -18,7 +18,7 @@ class Api::MoviesController < ApplicationController
     @characters = @movie.characters.all
     render json: {
       movie: @movie,
-      characters: @characters
+      character: @character
     }
   end
 
