@@ -1,24 +1,21 @@
-# README
+<h1> :leaves: GhibliDB :leaves: </h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p>GhibliDB is a database of movies produced by Studio Ghibli where users can discuss their favorite animated films. </p>
+<br />
 
-Things you may want to cover:
+<b> Tools Used </b>
+* Flexbox and styled-components
+* React on Rails
+* Devise for authentication
+<br />
+<b>Future Development</b>
+* Users will be able to add movies to their favorites
+* Users will be able to add personal icons
+<br />
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<b> Links </b>
+* <a href="https://trello.com/b/4eem0iVq/wdi-unit-4-project-ghiblidb"> Trello </a>
+* <a href="http://ibb.co/album/gROA8v"> Wireframes and ERD </a>
+* <a href="https://ghiblidb.herokuapp.com/"> Heroku </a>
