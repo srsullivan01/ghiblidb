@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+// import SearchBar from "./SearchBar";
 import styled  from 'styled-components';
 
 const Nav = styled.div`
@@ -12,9 +13,11 @@ padding: 2.5% 2.5%
 box-shadow: 0px 1px 6px black;
 h1{
 color: #072A5A;
+font-family: 'Patua One', cursive;
 }
 a{
   text-decoration: none;
+  font-family: 'PT Sans Caption', sans-serif;
   color: #6BA260;
   margin: 0 5px;
   &:visited{

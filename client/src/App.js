@@ -4,7 +4,7 @@ import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
 import Navbar from "./components/Navbar";
 import SignUpLogIn from "./components/SignUpLogIn";
-// import Comment from "./components/Comment";
+
 import { setAxiosHeaders } from './util';
 import './App.css';
 

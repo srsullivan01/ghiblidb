@@ -12,6 +12,7 @@ const CommentContainer = styled.div`
   flex: 1;
   h3{
     color: #072A5A;
+    font-family: 'PT Sans Caption', sans-serif;
   }
 `;
 
@@ -26,6 +27,7 @@ const StyledForm = styled.form`
     padding:0px;
     display:block;
     font-weight: bold;
+    font-family: 'PT Sans Caption', sans-serif;
   }
 
 `;
@@ -55,7 +57,7 @@ const StyledButton = styled.button`
 
 
 // component
-class Comment extends Component {
+class CommentForm extends Component {
   constructor(){
     super();
     this.state = {
@@ -81,9 +83,13 @@ class Comment extends Component {
 
   _handleSubmit = async (e) => {
     e.preventDefault();
-    const movie_id = this.props.movieId
-    const payload = this.state.comment
-    const res = await axios.post(`/api/movies/${movie_id}/comments`, payload)
+    const movie_id = this.props.api_id
+    const payload = {
+      movie_id: movie_id,
+      comment: this.state.comment
+    }
+
+    const res = await axios.post(`/api/comments`, payload)
     const comments = res.data
     this.setState({redirect: true})
   }
@@ -114,4 +120,4 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+export default CommentForm;

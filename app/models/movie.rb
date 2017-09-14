@@ -6,7 +6,7 @@ class Movie < ApplicationRecord
 
 
   def self.generate(id)
-    movie = find_by api_id: api_id
+    movie = find_by id: api_id
     return movie unless movie.nil?
 
     response = get "/#{api_id}"

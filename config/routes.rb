@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: "api/movies#index"
   namespace :api do
+    resources :comments
     resources :movies do
       resources :characters, only: [:index, :show]
       resources :comments 

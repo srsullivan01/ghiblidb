@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 import CommentCard from "./CommentCard";
 import CommentList from "./CommentList";
 import styled from 'styled-components';
@@ -17,6 +17,7 @@ flex: 1;
 const Details = styled.div`
   display: flex;
   flex-direction: column;
+  font-family: 'PT Sans Caption', sans-serif;
   border-radius: 9px;
   border: 1px solid;
   border-color: #74787B;
@@ -29,10 +30,12 @@ const Details = styled.div`
 const Synopsis = styled.div`
 display: flex;
 flex-direction: column;
+font-family: 'PT Sans Caption', sans-serif;
 padding: 2.5%;
 flex: 1;
 h1{
   color: #072A5A;
+  font-family: 'Patua One', cursive;
 }
 `;
 
@@ -53,21 +56,21 @@ class Movie extends Component {
     const movieId = this.props.match.params.id;
     // console.log(props);
     this._fetchMovies(movieId);
-    this._fetchComments(movieId)
+    // this._fetchComments(movieId)
   }
 
-  _fetchComments = async (movieId) => {
-    // console.log(movieId);
-    try {
-      const res = await axios.get(`/api/movies/${movieId}/comments`);
-      this.setState({comments: res.data});
-      return res.data
-    }
-    catch (err) {
-      await this.setState({error: err.message})
-      return err.message
-    }
-  }
+  // _fetchComments = async (movieId) => {
+  //   // console.log(movieId);
+  //   try {
+  //     const res = await axios.get(`/api/movies/${movieId}/comments`);
+  //     this.setState({comments: res.data});
+  //     return res.data
+  //   }
+  //   catch (err) {
+  //     await this.setState({error: err.message})
+  //     return err.message
+  //   }
+  // }
 
   _fetchMovies = async (movieId) => {
     try {
@@ -75,7 +78,7 @@ class Movie extends Component {
       // console.log(response)
       this.setState({movie: res.data, characters: res.data.people, api_id: res.data.id});
       const payload = this.state.movie;
-      const response = await axios.post(`https://ghibliapi.herokuapp.com/films/${movieId}`, payload)
+      const response = await axios.post(`/api/movies/${movieId}`, payload)
       this.setState({movie: response.data})
     }
     catch (err) {
@@ -89,7 +92,6 @@ class Movie extends Component {
     <div>
       <MovieContainer>
         <Details>
-          {/* <img src={this.state.movie.url} alt={this.state.movie.title} /> */}
           <ul>
             <li> Released: <p>{this.state.movie.release_date}</p> </li>
           <li>Director: <p>{this.state.movie.director}</p> </li>
@@ -102,23 +104,8 @@ class Movie extends Component {
       </Synopsis>
       </MovieContainer>
 
-          {/* <h2>Characters</h2>
-          {this.state.characters.map((character) => (
-            <div key={character.id}>
-              <h4>{character.name}</h4> */}
-
-          {/* // ))} */}
-          <div>
-
-          {this.state.comments.map((comment) => (
-            <div>
-
-
-            </div>
-          ))}
-        </div>
-          <CommentList api_id= {this.state.api_id} />
-          <Comment movieId={this.state.movie.api_id}  />
+          <CommentList api_id= {this.props.match.params.id} />
+          <CommentForm api_id={this.props.match.params.id}  />
 
     </div>
     );
