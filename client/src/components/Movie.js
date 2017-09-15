@@ -39,6 +39,28 @@ h1{
 }
 `;
 
+const StyledButton = styled.button`
+  align-items: space-between;
+  margin: 3px;
+  padding: 8px 15px 8px 15px;
+  max-width: 10%;
+  background-color: #6BA260;
+  border: none;
+  color: #EBE3D5;
+  &:active {
+    outline-color: transparent;
+    outline-style: none;
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  };
+  &:select {
+    outline-color: transparent;
+    outline-style: none;
+  };
+`;
+
+
 
 
 // Component
@@ -101,6 +123,7 @@ class Movie extends Component {
       <Synopsis>
           <h1>{this.state.movie.title}</h1>
           <p>{this.state.movie.description}</p>
+          <StyledButton>Add To Favorites </StyledButton>
       </Synopsis>
       </MovieContainer>
 

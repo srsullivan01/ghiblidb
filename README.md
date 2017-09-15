@@ -8,9 +8,9 @@
 * React on Rails
 * Devise for authentication
 <br />
-<b>Future Development</b>
-* Users will be able to add movies to their favorites
-* Users will be able to add personal icons
+<b>Future Development</b><br />
+* Users will be able to add movies to their favorites<br/>
+* Users will be able to add personal icons 
 <br />
 
 
