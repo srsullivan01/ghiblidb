@@ -4,120 +4,47 @@ import Movie from './Movie';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+const Search = styled.div`
 
+`;
 
+const Container1 = styled.div`
+width: 300px;
+vertical-align: middle;
+white-space: nowrap;
+position: relative;
+.icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  color: #4f5b66;
+};
+`;
 
-// const SearchStyle = styled.div`
-//     input {
-//         width: 45vw;
-//         margin: 10px;
-//         border-radius: 2px;
-//         padding: 5px;
-//         border: none;
-//     }
-// `
-// const MovieTitle = styled.div`
-//     background-color: #404E5C;
-//     color: white;
-//     font-size: 200%;
-//     margin-top: 20px;
-//     margin-bottom: 25px;
-//     text-align: center;
-// `
-//
-// class SearchBar extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             movies: [],
-//             search: ''
-//         }
-//     }
-//
-//
-// _searchMovie = async (e) => {
-//     e.preventDefault();
-//     const search = this.state.search
-//     const url = `https://ghibliapi.herokuapp.com/films?title=${search}`
-//     try {
-//         const res = await axios.get(url,
-//           { transformRequest: [(data, headers) => {
-//             delete headers['access-token']
-//             delete headers['uid']
-//             delete headers['client']
-//             delete headers['expiry']
-//             delete headers['token-type']
-//             delete headers.common
-//             return data;
-//           }]
-//         });
-//         await this.setState({movies: res.data.results})
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };
-//
-// _addMovie = (movie) => {
-//   const id = this.props.match.params.id
-//   const payload ={
-//       title: movie.title,
-//       director: movie.director,
-//       movie_id: movie.id,
-//       producer: movie.producer,
-//       release: movie.release_date,
-//   }
-//   try {
-//       const res = axios.post(`/api/movies/${id}`, payload)
-//   } catch (err) {
-//       console.log(err);
-//   }
-// };
-//
-// _handleChange = (e) => {
-//     const newState = {...this.state}
-//     newState[e.target.name] = e.target.value
-//     this.setState(newState)
-// };
-//
-//
-// render() {
-//   const id = this.props.match.params.id
-//   return (
-//   <div>
-//       <div className="row justify-content-center">
-//           Search for Movie
-//       </div>
-//
-//       <div style={{textAlign: "center", marginBottom: "20px"}}>
-//           <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
-//       </div>
-//
-//       <div className="row justify-content-center">
-//           <form>
-//               <div>
-//                   <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
-//                   <button onClick={this._searchMovie} className="default-button">Submit</button>
-//               </div>
-//           </form>
-//       </div>
-//       <div>Movies Found</div>
-//       <div className="row justify-content-center">
-//           {this.state.movies.map( (movie) => {
-//           return (
-//               <div key={movie.id}>
-//                   <div movie={movie} />
-//                   <div style={{display: "flex", justifyContent: "center"}}>
-//                   </div>
-//               </div>
-//           )
-//           })}
-//       </div>
-//
-//     <div className="row justify-content-center">
-//         <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
-//     </div>
-// </div>
-//     );
-//   }
-// }
+const StyledInput = styled.input`
+  border-radius: 5px;
+  width: 50%;
+  height: 35px;
+  color: black;
+  font-weight: bold;
+  &:focus{
+    outline-color: #4E988E;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  };
+`;
+
+class SearchBar extends Component {
+  render(){
+    return(
+<Search>
+      <Container1>
+        <span class="icon"><i class="fa fa-search"></i></span>
+        <StyledInput type="search" id="search" placeholder="Coming Soon..." />
+      </Container1>
+</Search>
+    );
+  }
+}
 export default SearchBar;
