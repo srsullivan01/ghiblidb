@@ -4,6 +4,8 @@ import Movie from './Movie';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
+//styling
 const Search = styled.div`
 
 `;
@@ -35,7 +37,11 @@ const StyledInput = styled.input`
   };
 `;
 
+
+//component
 class SearchBar extends Component {
+
+
   render(){
     return(
 <Search>

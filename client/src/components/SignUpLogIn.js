@@ -12,7 +12,29 @@ const LoginStyle = styled.div`
   margin-right: auto;
   transform: translate(-50%, -50%)
   max-width: 450px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;  
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+`;
+
+const StyledInput = styled.input`
+  border-radius: 5px;
+  width: 50%;
+  height: 35px;
+  color: black;
+  font-weight: bold;
+  &:focus{
+    outline-color: #4E988E;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  };
+`;
+
+const StyledButton = styled.button`
+  align-items: space-between;
+  margin: 3px;
+  padding: 8px 15px 8px 15px;
+  background-color: #6BA260;
+  border: none;
+  color: #EBE3D5;
 `;
 
 class SignUpLogIn extends Component {
@@ -63,19 +85,19 @@ class SignUpLogIn extends Component {
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
-           <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
+           <StyledInput onChange={this._handleChange} type="text" name="email" value={this.state.email} />
          </div>
          <div>
            <label htmlFor="password">Password: </label>
-           <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />
+           <StyledInput onChange={this._handleChange} type="text" name="password" value={this.state.password} />
          </div>
          <div>
            <label htmlFor="password">Confirm Password: </label>
-           <input onChange={this._handleChange} type="text" name="password_confirmation" value={this.state.password_confirmation} />
+           <StyledInput onChange={this._handleChange} type="text" name="password_confirmation" value={this.state.password_confirmation} />
          </div>
 
-         <button>Sign Up</button>
-         <button onClick={this._signIn}>Log In</button>
+         <StyledButton>Sign Up</StyledButton>
+         <StyledButton onClick={this._signIn}>Log In</StyledButton>
        </form>
      </LoginStyle>
    );

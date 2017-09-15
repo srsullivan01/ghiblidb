@@ -54,6 +54,19 @@ const StyledButton = styled.button`
   color: #EBE3D5;
 `;
 
+const StyledInput = styled.input`
+  border-radius: 5px;
+  width: 50%;
+  height: 35px;
+  color: black;
+  font-weight: bold;
+  &:focus{
+    outline-color: #4E988E;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  };
+`;
+
 
 
 // component
@@ -104,11 +117,11 @@ class CommentForm extends Component {
         <StyledForm onSubmit={this._handleSubmit}>
           <StyledTitle>
           <label htmlFor="title"> Title: </label>
-          <input onChange={this._handleChange} type="text" name="title" value={this.state.title}/>
+          <StyledInput onChange={this._handleChange} type="text" name="title" value={this.state.title}/>
         </StyledTitle>
         <StyledBody>
           <label htmlFor="body"> Body: </label>
-          <input onChange={this._handleChange} type="textarea" name= "body" value={this.state.body}  />
+          <StyledInput onChange={this._handleChange} type="textarea" name= "body" value={this.state.body}  />
         </StyledBody>
           <StyledButton>Submit</StyledButton>
 
